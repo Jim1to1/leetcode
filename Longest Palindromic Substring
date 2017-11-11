@@ -14,3 +14,117 @@ Input: "cbbd"
 
 Output: "bb"
 
+
+
+
+接下来是尝试的几种方法：
+class Solution {
+  
+    //public String longestPalindrome(String s) {
+        
+   /*  此题使用中心节点法。简单来说，就是字符串的每个节点进行一次找回文操作。有两种回文情况需要判断。
+       以其为中心，然后向两边找，expand是通用的。找一个最大的值。我们的目的是输出子串，标记位为start,end。
+       如果比起大，end和start就转换，最后在输出其子串即可。
+   
+   
+   
+   //字符串就是字符串，不用转化为字符数组，字符数组可以进行的操作字符串都可以进行
+	     int maxlength=0,start=0,end=0;//start和end就是最后输出的两个指标
+	   for(int i=0;i<s.length();i++)
+	   {
+		   int len1=expandnumber(s, i, i);//其长度
+		   int len2=expandnumber(s, i, i+1);
+		   int template=Math.max(len1, len2);
+		   if(template>end-start)
+		   {
+			   start=i-(template-1)/2;
+			   end =i+template/2;
+					   
+		   }
+	   }
+	   
+	   return s.substring(start, end+1);
+	
+      
+  }
+  
+   int expandnumber(String s,int left,int right)
+   {
+	   
+	   int L=left,R=right;
+	   while(L>=0&&R<s.length()&&s.charAt(L)==s.charAt(R))
+	   {
+		   L--;
+		   R++;
+	   }
+	   return R-L-1;
+   }   */
+        
+        
+  //接下来，使用另一种方法。就是将字符串翻转。思路的侧重点在于回文是对称的，翻转后还是相同的。
+   //问题变成了求两个字符串的相同子串的问题
+    
+     public String longestPalindrome(String s) {
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  //另一种方法就是暴力法，找出所有的可能的end和start，判断是不是，是的话比较大小。就是会时间过长，不合格。实践证明是可以的。
+   /*   public String longestPalindrome(String s) {
+     int end=0,start=0;
+     
+     for(int i=0;i<s.length();i++)
+     {
+    	 for(int j=i;j<s.length();j++)
+    	 {
+    		 if(isPalidrome(s, i, j))
+    		 {
+    			 if((j-i)>end-start)
+    			 {
+    				 start=i;
+    				 end=j;
+    			 }
+    		 }
+    	 }
+     }
+     
+     return s.substring(start,end+1);
+	  
+	  
+  
+	
+  }
+  
+  Boolean isPalidrome(String s,int left,int right)
+  {
+	  boolean flag=true;
+	  int l=left,r=right;
+	  while(l<r)
+	  {
+		  if(s.charAt(l)==s.charAt(r))
+		  {
+			  l++;
+			  r--;
+		  }
+		  else {
+			  flag=false;
+			  break;
+		  }
+	  }
+	  return flag;
+  }
+  
+        */
+        
+        
+}
