@@ -22,3 +22,36 @@ public int[] twoSum(int[] nums, int target) {
     }
     throw new IllegalArgumentException("No two sum solution");
 }
+
+//一下为自己编写的代码：
+class Solution {
+    public int[] twoSum(int[] nums, int target) 
+    {
+        //此处在，无重复值，无多种可能，无负数，需要排序的条件下
+        //不能排序
+	        boolean flag=false ;
+	        int template1,template2;
+	       
+	        int a[]=new int[2];
+	        for(int i=0;i<nums.length;i++)
+	        {
+	            template1=nums[i];
+	            for(int j=i+1;j<nums.length;j++)
+	            {
+	                template2=nums[j];
+	                if(template1+template2==target)
+	                {flag=true;
+	                  a[1]=j;
+	                     break;}
+	            }
+	            if(flag)
+	            { a[0]=i;
+	                break;}
+	       }
+	        if(!flag)
+	        {System.out.println("没有符合的两个数字满足条件");}
+	        return a;
+	    }
+    }
+ 
+	   //方法的时间复杂等是O(n2)
