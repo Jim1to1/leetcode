@@ -1,0 +1,126 @@
+ The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this:
+ (you may want to display this pattern in a fixed font for better legibility)
+
+P   A   H   N
+A P L S I I G
+Y   I   R
+
+And then read line by line: "PAHNAPLSIIGYIR"
+
+Write the code that will take a string and make this conversion given a number of rows:
+
+string convert(string text, int nRows);
+
+convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR". 
+
+
+
+
+//以上为问题。
+//以下为写出来的答案，思路其实很简单，我们在写Z的时候是顺着字符串然后4个3个的写，亮点在于如何将其对应的每一行给在一起，这个时候stringbuffer的
+//append方法就显示出来其优点了。到了就给其贴上去，最后讲几个 stringbuffer给结合在一起就可以了
+//对于这种在过程中不短增长的字符串用stringbuffer，以下为答案
+class Solution {
+    public String convert(String s, int numRows) {
+        //
+        		 
+		 int c=s.length();
+		 char array2[]=s.toCharArray();
+		 StringBuffer array1[]=new StringBuffer[numRows];
+		 //初始化数组
+		 for(int i=0;i<numRows;i++)
+		 {
+			 array1[i]=new StringBuffer();
+		 }
+		 int index=0;
+		 while(index<c)
+			 
+		 {
+			 for(int i=0;i<numRows&&index<c;i++)
+			 {
+				 array1[i].append(array2[index++]);
+ 
+			 }
+			 for (int j=numRows-2;j>0&&index<c;j--) 
+			 {
+				array1[j].append(array2[index++]);
+			} 
+			 
+		 }
+		 
+		 for(int i=1;i<numRows;i++)
+		 {
+			 array1[0].append(array1[i]);
+		 }
+		 
+		 return array1[0].toString();
+		 
+
+	 
+	 }
+	 
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //自己写的比较繁琐的同时，容易出各种问题。虽然思路中用到队列还是可以的 写不出来就是0.0.0.0.
+    	 /*   //依据一般的规律，找出对应字符的位置，一层一层的往下读就可以了.
+		//思路是找出前两行的和最后一行的，中间有规律
+		int result[]=new int[s.length()];
+		int index=0;
+		int k=0;
+	     while(k*(2*numRows-2)<s.length())
+		 {
+		    	result[index++]=k*(2*numRows-2);
+		    	k++;
+		  }
+	     
+	         int template=index;
+	    	for(int i=0;i<index;i++)
+	    	{
+	    		if(result[i]-1<0)
+	    		{
+	    			result[index++]=result[i]+1;
+	    			continue;
+	    		}
+	    		if(result[i]>0&&(result[i]+1)<s.length())
+	    		{
+	    			result[index++]=result[i]-1;
+	    			result[index++]=result[i]+1;
+	    		}
+	    		if(result[i]+1==s.length())
+	    		{
+	    			result[index++]=result[i]-1;
+	    		}
+	    		
+	    	}
+	    int start=template,end=index;
+	     for(int i=2;i<numRows;i++)
+	     {
+	    	 int template2=0;
+	    	 while(start<end)
+	    	 {
+	    		 if(result[start]+1==)
+	    		 if(template2%2==0)
+	    		 {result[index++]=}
+	    	 }
+	     }
+	     
+	    
+		}
+	        
+	    
+	    }
+	    
+	    *
+	    *
+	    *尝试使用数学的方法来解决，但是考虑的情况比较对，比较复杂。
+	    */
