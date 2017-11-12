@@ -124,3 +124,39 @@ class Solution {
 	    *
 	    *尝试使用数学的方法来解决，但是考虑的情况比较对，比较复杂。
 	    */
+	    //别人用我的思路做出来的方法，我改了下通过。可以借鉴别人编码的简洁和我的区别
+ public class Solution {
+    public String convert(String s, int numRows) {
+        
+         if (numRows==1)
+		 {
+			 return s;
+		 }
+		 int c=s.length(),k=0,index=0;
+		 StringBuffer result=new StringBuffer();
+		 for(int i=0;i<numRows;i++)
+		 {
+			while(true)
+			
+		
+				if(i==0||i==numRows-1)
+				{
+					index=2*k*(numRows-1)+i;
+				}
+				else {
+					index=(k%2==0)?k*(numRows-1)+i:(k+1)*(numRows-1)-i;
+					//我自己就想如果这如果那的，其实唯二的结果用下面的语句
+				}
+				
+				if(index>=c)
+				{
+					break;
+				}
+			result.append(s.charAt(index));
+			k++;
+			}
+			k=0;
+		 }
+		 return result.toString();
+    }
+}
