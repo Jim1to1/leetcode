@@ -1,0 +1,34 @@
+class Solution:
+    def myAtoi(self, str):
+        """
+        :type str: str
+        :rtype: int
+        """
+        str=str.strip()
+        if len(str)==0:
+            return 0
+        tem="0"
+        result=0
+        i=0
+        MAX_NUMBER=2147483647
+        MIN_NUMBER=-2147483648
+        if str[0] in "+-":
+            tem=str[0]
+            i=1
+        for i in range(i,len(str)):
+            if str[i].isdigit():
+                tem+=str[i]
+            else:
+                break
+        if len(tem)>1:
+            result=int(tem)
+        if result>MAX_NUMBER>0:
+            return MAX_NUMBER
+        elif result<MIN_NUMBER<0:
+            return  MIN_NUMBER
+        else:
+            return result
+        """
+        先去除string的两边空白字符串，判断是否是空，有可能是符号，先得到+-，在一次得到其数字
+        最后判断数字的大小是否超过int的表示的值得范围
+        """
